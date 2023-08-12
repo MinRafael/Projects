@@ -1,0 +1,891 @@
+{
+	"info": {
+		"_postman_id": "4c2e0e4d-2af8-482e-b274-bf9e71ef30f8",
+		"name": "ShceduleAndPersonalEvents",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26918596"
+	},
+	"item": [
+		{
+			"name": "CreateEvent",
+			"item": [
+				{
+					"name": "CreateWithDateFuture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-06-14T08:00:00+03:00\",\r\n    \"endAt\" : \"2023-06-14T09:00:00+03:00\",\r\n    \"title\" : \" Стоматолог \",\r\n    \"description\" : \"\",\r\n    \"color\" : \"#81888D\",\r\n    \"backgroundColor\" : \"#F4F5F6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithDatePast",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-05-17T08:00:00+03:00\",\r\n    \"endAt\" : \"2023-05-17T09:00:00+03:00\",\r\n    \"title\" : \" Стоматолог \",\r\n    \"description\" : \"   \",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithMaximumDuration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-05-17T00:00:00+03:00\",\r\n    \"endAt\" : \"2023-05-17T23:59:00+03:00\",\r\n    \"title\" : \"569896\",\r\n    \"description\" : \"Стоматолог\",\r\n    \"color\" : \"#D478F1\",\r\n    \"backgroundColor\" : \"#F9EBFF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithMinimumDuration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-05-17T21:00:00+03:00\",\r\n    \"endAt\" : \"2023-05-17T21:01:00+03:00\",\r\n    \"title\" : \"Курс Course دورة 강의\",\r\n    \"description\" : \"Стоматолог,!@#$%^&*()_\",\r\n    \"color\" : \"#81888D\",\r\n    \"backgroundColor\" : \"#F4F5F6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithOccupiedTime",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-06-14T08:00:00+03:00\",\r\n    \"endAt\" : \"2023-06-14T09:00:00+03:00\",\r\n    \"title\" : \"Курс\",\r\n    \"description\" : \"516589\",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithLongDiscription",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-05-17T21:00:00+03:00\",\r\n    \"endAt\" : \"2023-05-17T21:01:00+03:00\",\r\n    \"title\" : \"Курс강의دورةCourse\",\r\n    \"description\" : \"Таким образом укрепление и развитие структуры позволяет выполнять важные задания по разработке форм развития. Не следует, однако забывать, что начало повседневной работы по формированию позиции играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач. Разнообразный и богатый опыт постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке дальнейших направлений развития.С другой стороны дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и модернизации систем массового участия. Таким образом рамки и место обучения кадров требуют определения и уточнения систем массового участия. Таким образом консультация с широким активом требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.Не следует, однако забывать, что постоянное информационно-пропагандистское обеспечение нашей деятельности требуют определения и уточнения систем массового участия. Таким образом начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке новых предложений. Равным образом реализация намеченных плановых заданий представляет собой интересный эксперимент проверки соответствующий условий активизации.Задача организации, в особенности же начало повседневной работы по формированию позиции способствует подготовки и реализации направлений прогрессивного развития. Значимость этих проблем настолько очевидна, что сложившаяся структура организации позволяет выполнять важные задания по разработке направлений прогрессивного развития.Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности в значительной степени обуславливает создание направлений прогрессивного развития. Идейные соображения высшего порядка, а также укрепление и развитие структуры позволяет выполнять важные задания по разработке модели развития. Равным образом сложившаяся структура организации играет важную роль в формировании форм развития.\",\r\n    \"color\" : \"#43B658\",\r\n    \"backgroundColor\" : \"#EBFDF2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithLinkAndMarkdown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-06-14T21:00:00+03:00\",\r\n    \"endAt\" : \"2023-06-14T22:00:00+03:00\",\r\n    \"title\" : \"Курс,~`!@}#$%^&'*()_{+<>?:\",\r\n    \"description\" : \"https://my.sky.pro/ ~~Курс~~\",\r\n    \"color\" : \"#81888D\",\r\n    \"backgroundColor\" : \"#F4F5F6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithPicturesInDescription",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-06-14T21:00:00+03:00\",\r\n    \"endAt\" : \"2023-06-14T22:00:00+03:00\",\r\n    \"title\" : \"Курс,~`!@}#$%^&'*()_{+<>?:\",\r\n    \"color\" : \"#81888D\",\r\n    \"backgroundColor\" : \"#F4F5F6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithEmptyTitle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-06-14T20:00:00+03:00\",\r\n    \"endAt\" : \"2023-06-14T20:45:00+03:00\",\r\n    \"title\" : \"\",\r\n    \"description\" : \"\",\r\n    \"color\" : \"#43B658\",\r\n    \"backgroundColor\" : \"#EBFDF2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithNonValidDataInTitle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-05-17T20:00:00+03:00\",\r\n    \"endAt\" : \"2023-05-17T20:45:00+03:00\",\r\n    \"title\" : \"   \",\r\n    \"description\" : \"КурсCourseدورة강의\",\r\n    \"color\" : \"#D478F1\",\r\n    \"backgroundColor\" : \"#F9EBFF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithOverageSymbolsInTitle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-06-14T20:00:00+03:00\",\r\n    \"endAt\" : \"2023-06-14T20:45:00+03:00\",\r\n    \"title\" : \"Поиск смешанных слов или слов в различныхgh\",\r\n    \"description\" : \"\",\r\n    \"color\" : \"#81888D\",\r\n    \"backgroundColor\" : \"#F4F5F6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithoutDate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"T20:00:00+03:00\",\r\n    \"endAt\" : \"T20:45:00+03:00\",\r\n    \"title\" : \"Курс,~`!@#$%^&*()_+<>?:\",\r\n    \"description\" : \" стоматолог \",\r\n    \"color\" : \"#43B658\",\r\n    \"backgroundColor\" : \"#EBFDF2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithoutDuration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-06-14\",\r\n    \"endAt\" : \"2023-06-14\",\r\n    \"title\" : \"КурсCourseدورة강의\",\r\n    \"description\" : \"\",\r\n    \"color\" : \"#43B658\",\r\n    \"backgroundColor\" : \"#EBFDF2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWithStartTimeLateEndTime",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-05-17T13:00:00+03:00\",\r\n    \"endAt\" : \"2023-05-17T12:00:00+03:00\",\r\n    \"title\" : \"569896\",\r\n    \"description\" : \"\",\r\n    \"color\" : \"#D478F1\",\r\n    \"backgroundColor\" : \"#F9EBFF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UpdateEvent",
+			"item": [
+				{
+					"name": "CreateEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-05-17T08:00:00+03:00\",\r\n    \"endAt\" : \"2023-05-17T09:00:00+03:00\",\r\n    \"title\" : \" Стоматолог \",\r\n    \"description\" : \"   \",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-06-14T20:00:00+03:00\",\r\n    \"endAt\" : \"2023-06-14T21:00:00+03:00\",\r\n    \"title\" : \"Курьер\",\r\n    \"description\" : \"Предварительно позвонить!\",\r\n    \"color\" : \"#81888D\",\r\n    \"backgroundColor\" : \"#F4F5F6\",\r\n    \"id\" : {{IDEV}},\r\n    \"oldStartAt\" : \"2023-05-17T08:00:00+03:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/updatePersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"updatePersonal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DeleteEvent",
+			"item": [
+				{
+					"name": "CreateEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"IDEV\"\r",
+									"var value = pm.response.json().data.payload.id //Вместо id можно использовать другое поле  json\r",
+									"pm.collectionVariables.set(key, value)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2023-05-17T08:00:00+03:00\",\r\n    \"endAt\" : \"2023-05-17T09:00:00+03:00\",\r\n    \"title\" : \" Стоматолог \",\r\n    \"description\" : \"   \",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token_global={{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"id\" : {{IDEV}},\r\n    \"startAt\" : \"2023-05-17T08:00:00+03:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v2/schedule/removePersonal",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"removePersonal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://api-teachers.skyeng.ru",
+			"type": "string"
+		},
+		{
+			"key": "IDEV",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
